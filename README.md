@@ -122,21 +122,5 @@ A RESTful API for managing a library of books. This system allows users to add, 
 
 4. The application will run on `http://localhost:8080`.
 
-## Usage
 
-You can interact with the application via the provided API endpoints. Here are some examples of the available endpoints:
 
-### API Endpoints
-
-#### 1. Add a Book
-**POST** `/api/books/add`
-
-**Request Body**:
-```json
-{
-  "id": 1,
-  "title": "The Great Gatsby",
-  "author": "F. Scott Fitzgerald",
-  "year": 1925,
-  "genre": "Fiction"
-}
