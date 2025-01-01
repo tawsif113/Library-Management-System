@@ -103,7 +103,8 @@ The Library Management System is a RESTful API built using Spring Boot that prov
 
 ---
 
-## Example Directory Structure
+
+## Directory Structure
 
 ```plaintext
 src/main/java/com/librarymanagement/
@@ -120,3 +121,14 @@ src/main/java/com/librarymanagement/
 │   ├── Book.java                   // Book class
 ├── LibraryManagementApplication.java  // Main Spring Boot application
 ├── ShutdownHook.java              // Clean up before shutdown
+
+---
+### Features Highlight:
+- **Readable Structure**: Clear headings, bullet points, and proper formatting.
+- **Code Blocks**: Commands, directory structures, and examples are highlighted using code blocks.
+- **Consistency**: Uniform formatting across sections.
+- **Badges**: Adds a professional look.
+  
+### Review and Suggestions:
+Your friends can easily review this by visiting the repository, viewing the README, and giving comments on specific sections via GitHub issues or PR reviews.
+
