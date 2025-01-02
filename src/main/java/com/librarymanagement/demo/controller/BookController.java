@@ -26,7 +26,7 @@ import java.util.List;
  *    Adds a new book to the library with details such as title, author, year, and genre.
  *    Delegates the operation to the libraryService's addBook method.
  *
- * 2. DELETE /remove:
+ * 2. DELETE /removebooks:
  *    Removes a specific book from the library.
  *    Supports removal by ID or title, based on the query parameters provided.
  *    Delegates the operation to the libraryService's removeBookById or removeBookByTitle methods.
