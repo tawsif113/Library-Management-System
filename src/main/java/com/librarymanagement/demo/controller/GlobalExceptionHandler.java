@@ -8,15 +8,32 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+
+
 /**
- * GlobalExceptionHandler handles exceptions that are thrown during the execution of the application and provides an appropriate response.
- * This class defines specific exception handlers for commonly occurring exceptions in the application, such as:
- * 1. DuplicateBookException - Occurs when attempting to add a book that already exists based on title and author.
- * 2. NotFoundException - Occurs when a requested resource (e.g., book) is not found.
- * It returns appropriate HTTP status codes and error messages in response to these exceptions.
+ * GlobalExceptionHandler is a component that provides centralized exception handling
+ * across all controllers in the application. It leverages Spring's {@code @ControllerAdvice}
+ * to intercept and handle specific exceptions, returning appropriate HTTP responses to the client.
+ *
+ * Exception Handling:
+ * - Handles exceptions thrown during the execution of controller methods and converts them
+ *   into standardized HTTP responses with corresponding status codes.
+ * - Supports handling of custom exceptions, such as {@code DuplicateBookException} and {@code NotFoundException},
+ *   as well as common exceptions like {@code IllegalArgumentException}.
+ *
+ * Exception Handlers:
+ * 1. {@code DuplicateBookException}:
+ *    - Triggered when an attempt is made to add a duplicate book to the library management system.
+ *    - Returns a response with HTTP 409 Conflict status and the exception's message.
+ *
+ * 2. {@code NotFoundException}:
+ *    - Triggered when a requested resource, such as a book, is not found.
+ *    - Returns a response with HTTP 404 Not Found status and the exception's message.
+ *
+ * 3. {@code IllegalArgumentException}:
+ *    - Triggered when invalid arguments are provided to a controller method.
+ *    - Returns a response with HTTP 400 Bad Request status and the exception's message.
  */
-
-
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
