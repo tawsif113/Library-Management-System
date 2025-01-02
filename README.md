@@ -115,11 +115,11 @@ src/main/java/com/librarymanagement/
 ├── factory/
 │   ├── BookFactory.java            // Factory for creating Book objects
 ├── exception/
-│   ├── BookNotFoundException.java  // Custom exceptions
+│   ├── NotFoundException.java  // Custom exceptions
 │   ├── DuplicateBookException.java
 ├── model/
 │   ├── Book.java                   // Book class
 ├── LibraryManagementApplication.java  // Main Spring Boot application
 ├── ShutdownHook.java              // Clean up before shutdown
-
+```
 ---
