@@ -33,7 +33,7 @@ The Library Management System is a RESTful API built using Spring Boot that prov
   - **If found**: JSON response with removed book details.  
   - **If not found**: JSON error message.  
 - **Exception Handling**:  
-  - Custom exception: `BookNotFoundException`.  
+  - Custom exception: `NotFoundException`.  
   - Handled with `@ControllerAdvice` and `@ExceptionHandler`.  
 
 ---
