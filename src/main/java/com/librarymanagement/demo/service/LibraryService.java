@@ -52,41 +52,69 @@ public class LibraryService {
         bookList.add(new Book(idGenerator.getAndIncrement(), "1984", "George Orwell", 1949, "Dystopian"));
     }
 
+    private void validateBookInputs(String title, String author, int year, String genre) {
+        if (title == null || title.trim().isEmpty()) {
+            throw new IllegalArgumentException("Title cannot be null or empty");
+        }
+        if (author == null || author.trim().isEmpty()) {
+            throw new IllegalArgumentException("Author cannot be null or empty");
+        }
+        if (year <= 0) {
+            throw new IllegalArgumentException("Year must be a positive number");
+        }
+        if (genre == null || genre.trim().isEmpty()) {
+            throw new IllegalArgumentException("Genre cannot be null or empty");
+        }
+    }
+
     public String addBook(String title, String author, int year, String genre){
+
+        validateBookInputs(title,author,year,genre);
 
         if(bookList.stream()
                 .anyMatch(book->(book.getTitle().equalsIgnoreCase(title)) && (book.getAuthor().equalsIgnoreCase(author)))){
             throw new DuplicateBookException("book with Same title and author exits in database");
         }
+
         Book newBook = bookFactory.createBook(idGenerator.getAndIncrement(),title,author,year,genre);
         bookList.add(newBook);
+
         return "New Book added\n"+newBook;
     }
 
     public String removeBookById(int id){
         Book book = bookList.stream().filter(_book->_book.getId() == id).findFirst()
                 .orElseThrow(()->new NotFoundException("Book not found with given ID"));
+
         bookList.remove(book);
+
         return "Removed Book : "+book;
     }
 
     public String removeBookByTitle(String title){
+
         Book book = bookList.stream().filter(_book->_book.getTitle().equalsIgnoreCase(title)).
                 findFirst().orElseThrow(()->new NotFoundException("Book not found with given Title"));
+
         bookList.remove(book);
+
         return "Removed Book : "+book;
     }
     public List<Book> searchBooks(String title,String author,Integer publicationYear){
+
         List<Book> results = bookList.stream().filter(
                 book -> (title == null || book.getTitle().equalsIgnoreCase(title)) &&
                         (author == null || book.getAuthor().equalsIgnoreCase(author)) &&
                         (publicationYear == null || book.getPublicationYear() == publicationYear))
                 .collect(Collectors.toList());
+
         if(results.isEmpty())throw new NotFoundException("No Such Book Found");
+
         return results;
     }
 
     public List<Book> getAllBooks(){
+
         return bookList.stream()
                 .sorted(Comparator.comparing(Book::getTitle))
                 .toList();
