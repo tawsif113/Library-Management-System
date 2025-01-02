@@ -13,7 +13,7 @@ The Library Management System is a RESTful API built using Spring Boot that prov
 ### 1. Add a Book
 **Description**: Allows users to add a new book to the library inventory via a REST API.  
 - **Input Details**:  
-  - `Book ID` (unique identifier, integer)  
+  - `Book ID` (unique identifier, integer) /// ID is auto generated used AtomicInteger  
   - `Title` (string)  
   - `Author` (string)  
   - `Publication Year` (integer)  
