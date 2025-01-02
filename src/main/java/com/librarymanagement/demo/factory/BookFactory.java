@@ -1,6 +1,7 @@
 package com.librarymanagement.demo.factory;
 
 import com.librarymanagement.demo.model.Book;
+import com.librarymanagement.demo.model.Magazine;
 import org.springframework.stereotype.Component;
 
 
@@ -15,7 +16,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class BookFactory {
+
     public Book createBook(int id,String title, String author, int publicationYear, String genre){
         return new Book(id,title,author,publicationYear,genre);
+    }
+    public Magazine createMagazine(int id,String title, String publisher, int publicationYear, String genre){
+        return new Magazine(id,title,publicationYear,genre,publisher);
     }
 }

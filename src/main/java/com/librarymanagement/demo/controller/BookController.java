@@ -31,7 +31,7 @@ import java.util.List;
  *    Supports removal by ID or title, based on the query parameters provided.
  *    Delegates the operation to the libraryService's removeBookById or removeBookByTitle methods.
  *
- * 3. GET /:
+ * 3. GET /books:
  *    Retrieves a sorted list of all books in the library.
  *    Delegates the operation to the libraryService's getAllBooks method.
  *
@@ -62,14 +62,16 @@ public class BookController {
     }
 
     @DeleteMapping("/remove")
-    public String removeBook(@RequestParam(required = false) int id, @RequestParam(required = false) String title) {
-
+    public String removeBook(@RequestParam(required = false) Integer id, @RequestParam(required = false) String title) {
+        if (id == null && title == null) {
+            throw new IllegalArgumentException("Either 'id' or 'title' must be provided for removal.");
+        }
         if (title != null) return libraryService.removeBookByTitle(title);
         else return libraryService.removeBookById(id);
 
     }
 
-    @GetMapping
+    @GetMapping("/books")
     public List<Book> getAllBooks() {
         return libraryService.getAllBooks();
 

@@ -78,9 +78,9 @@ public class LibraryService {
     }
     public List<Book> searchBooks(String title,String author,Integer publicationYear){
         List<Book> results = bookList.stream().filter(
-                book -> (title == null || book.getTitle().equalsIgnoreCase(title)
-                    && (author == null || book.getAuthor().equalsIgnoreCase(author))
-                    && (publicationYear == null || book.getPublicationYear() == publicationYear)))
+                book -> (title == null || book.getTitle().equalsIgnoreCase(title)) &&
+                        (author == null || book.getAuthor().equalsIgnoreCase(author)) &&
+                        (publicationYear == null || book.getPublicationYear() == publicationYear))
                 .collect(Collectors.toList());
         if(results.isEmpty())throw new NotFoundException("No Such Book Found");
         return results;
