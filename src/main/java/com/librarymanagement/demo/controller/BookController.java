@@ -61,7 +61,7 @@ public class BookController {
 
     }
 
-    @DeleteMapping("/remove")
+    @DeleteMapping("/removebooks")
     public String removeBook(@RequestParam(required = false) Integer id, @RequestParam(required = false) String title) {
         if (id == null && title == null) {
             throw new IllegalArgumentException("Either 'id' or 'title' must be provided for removal.");
